@@ -2,7 +2,7 @@
   <q-page class="flex flex-center">
     <img
       alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
+      src="/logo_arvore_educacao.svg"
     >
   </q-page>
 </template>
