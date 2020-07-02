@@ -2,9 +2,18 @@
 const routes = [
   {
     path: '/',
+    name: 'TelaInicial',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') }
+    ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('layouts/AuthLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Login.vue') }
     ]
   },
 
