@@ -3,20 +3,8 @@
     <div class="flex column full-width">
       <h4 class="text-bold q-ml-sm">Biblioteca Offline</h4>
       <q-separator inset />
-      <q-carousel
-        v-model="slide"
-        swipeable
-        animated
-        arrows
-        height="230px"
-        class="text-white"
-      >
-        <q-carousel-slide name="style" class="row justify-start items-center q-gutter-xs no-wrap">
-          <q-img class="rounded-borders col-4 full-height" src="https://cdn.quasar.dev/img/mountains.jpg" />
-          <q-img class="rounded-borders col-4 full-height" src="https://cdn.quasar.dev/img/mountains.jpg" />
-          <q-img class="rounded-borders col-4 full-height" src="https://cdn.quasar.dev/img/mountains.jpg" />
-        </q-carousel-slide>
-      </q-carousel>
+      <carousel-books
+      />
     </div>
     <div class="flex column full-width">
       <span class="title flex">
@@ -30,7 +18,7 @@
         </p>
       </div>
       <q-separator inset />
-      <q-carousel
+      <!-- <q-carousel
         v-model="slide"
         disabled
         swipeable
@@ -40,18 +28,22 @@
         class="text-white"
       >
         <q-carousel-slide name="style" class="row justify-start items-center q-gutter-xs no-wrap">
-          <q-img disabled class="rounded-borders col-4 full-height" src="https://cdn.quasar.dev/img/mountains.jpg" />
-          <q-img disabled class="rounded-borders col-4 full-height" src="https://cdn.quasar.dev/img/mountains.jpg" />
-          <q-img disabled class="rounded-borders col-4 full-height" src="https://cdn.quasar.dev/img/mountains.jpg" />
+          <q-img disabled class="rounded-borders col-4 full-height" src="/epubs/49709315336.jpg" />
+          <q-img disabled class="rounded-borders col-4 full-height" src="/epubs/49709315336.jpg" />
+          <q-img disabled class="rounded-borders col-4 full-height" src="/epubs/49709315336.jpg" />
         </q-carousel-slide>
-      </q-carousel>
+      </q-carousel> -->
     </div>
   </q-page>
 </template>
 
 <script>
+import CarouselBooks from 'components/CarouselBooks'
 export default {
   name: 'PageIndex',
+  components: {
+    CarouselBooks
+  },
   data () {
     return {
       padding: true,
@@ -66,8 +58,13 @@ export default {
         { value: 'bottom', label: 'bottom (default)' },
         { value: 'left', label: 'left' }
       ],
-      slide: 'style',
+      slide: 1,
       lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'
+    }
+  },
+  methods: {
+    toBook () {
+      alert('teste')
     }
   }
 }

@@ -6,7 +6,6 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: '/reader', component: () => import('pages/Reader.vue') },
       { path: '/epub-reader', component: () => import('pages/EpubReader.vue') }
     ]
   },

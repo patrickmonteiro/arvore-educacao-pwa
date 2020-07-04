@@ -11,8 +11,7 @@ export default {
     epubUrl: {
       required: false,
       type: String,
-      // default: '/49709315336.epub'
-      default: 'https://s3.amazonaws.com/moby-dick/OPS/fonts/STIXGeneral.otf'
+      default: 'https://dental-college.s3.amazonaws.com/49709315336.epub'
     }
   },
   data () {
@@ -21,34 +20,13 @@ export default {
       src: '/4870695114727.pdf'
     }
   },
-  created () {
+  mounted () {
     // eslint-disable-next-line no-undef
-    const book = ePub(this.epubUrl)
+    const book = ePub('https://dental-college.s3.amazonaws.com/49709315336.epub')
     const rendition = book.renderTo('epub-render', { flow: 'paginated', height: '100%' })
     rendition.display()
     // eslint-disable-next-line no-undef
     console.log(book)
-  },
-  methods: {
-    fetchPDF (payload) {
-      this.$axios.post('/my/url/to/pdf', payload, { responseType: 'blob' }).then(res => {
-        // create the blob
-        const blob = new Blob([res.data], { type: res.data.type })
-        // set reactive variable
-        this.src = window.URL.createObjectURL(blob)
-      }).catch(err => {
-        console.log(err)
-        this.$q.notify({
-          message: 'Error downloading PDF',
-          type: 'negative',
-          textColor: 'white',
-          color: 'negative',
-          icon: 'error',
-          closeBtn: 'close',
-          position: 'top'
-        })
-      })
-    }
   }
 }
 </script>
