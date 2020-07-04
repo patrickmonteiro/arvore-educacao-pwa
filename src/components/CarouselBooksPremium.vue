@@ -12,15 +12,14 @@
   >
     <q-carousel-slide :name="1" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBook(books[0].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[0].img" />
-        <q-img @click="toBook(books[1].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[1].img" />
+        <q-img @click="toBookPremium('/epubs/lotr.jpg')" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/lotr.jpg" />
+        <q-img @click="toBookPremium('/epubs/hp.jpg')" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/hp.jpg" />
       </div>
     </q-carousel-slide>
 
     <q-carousel-slide :name="2" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBook(books[2].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[2].img" />
-        <q-img @click="toBook(books[3].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[3].img" />
+        <q-img @click="toBookPremium('/epubs/pj.jpg')" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/pj.jpg" />
       </div>
     </q-carousel-slide>
 
@@ -48,26 +47,12 @@ export default {
   name: 'CarouselBooks',
   data () {
     return {
-      slide: 1,
-      books: [
-        {
-          img: '/epubs/49709315336.jpg'
-        },
-        {
-          img: '/epubs/49709315346.jpg'
-        },
-        {
-          img: '/epubs/49709315446.jpg'
-        },
-        {
-          img: '/epubs/49709315483.jpg'
-        }
-      ]
+      slide: 1
     }
   },
   methods: {
-    toBook (img) {
-      this.$router.push({ name: 'detalheLivro', params: { imgBook: img } })
+    toBookPremium (img) {
+      this.$router.push({ name: 'detalheLivroPremium', params: { imgBook: img } })
     }
   }
 }
