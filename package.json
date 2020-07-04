@@ -13,7 +13,8 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
-    "epubjs": "^0.3.88",
+    "epubjs": "latest",
+    "jszip": "^3.5.0",
     "quasar": "^1.0.0"
   },
   "devDependencies": {
