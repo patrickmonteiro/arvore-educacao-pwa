@@ -12,14 +12,15 @@
   >
     <q-carousel-slide :name="1" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/49709315336.jpg" />
-        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/49709315346.jpg" />
+        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[0].img" />
+        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[1].img" />
       </div>
     </q-carousel-slide>
 
     <q-carousel-slide :name="2" class="column no-wrap">
-      <div class="row fit justify-center items-center q-gutter-xs q-col-gutter no-wrap">
-        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/49709315446.jpg" />
+      <div class="row fit justify-center items-center q-gutter-md no-wrap">
+        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[2].img" />
+        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[3].img" />
       </div>
     </q-carousel-slide>
 
@@ -47,7 +48,21 @@ export default {
   name: 'CarouselBooks',
   data () {
     return {
-      slide: 1
+      slide: 1,
+      books: [
+        {
+          img: '/epubs/49709315336.jpg'
+        },
+        {
+          img: '/epubs/49709315346.jpg'
+        },
+        {
+          img: '/epubs/49709315446.jpg'
+        },
+        {
+          img: '/epubs/49709315483.jpg'
+        }
+      ]
     }
   },
   methods: {

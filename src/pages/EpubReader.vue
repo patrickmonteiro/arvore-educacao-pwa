@@ -1,14 +1,22 @@
 <template>
   <q-page>
     <div id="epub-render"></div>
-    <q-btn @click="anterior()">
-      <q-icon name="arrow_left" />
-      Anterior
-    </q-btn>
-    <q-btn @click="proximo()">
-      Próximo
-      <q-icon name="arrow_right" />
-    </q-btn>
+    <div class="row q-gutter-md q-px-sm">
+      <q-btn
+        @click="anterior()"
+        icon="arrow_left"
+        label="Anterior"
+        class="col"
+        dense
+      />
+      <q-btn
+        @click="proximo()"
+        icon-right="arrow_right"
+        label="Próximo"
+        class="col"
+        dense
+      />
+    </div>
   </q-page>
 </template>
 
@@ -35,7 +43,9 @@ export default {
     // eslint-disable-next-line no-undef
     this.book = ePub(this.epubUrl)
     // eslint-disable-next-line no-undef
-    this.rendition = this.book.renderTo('epub-render')
+    this.rendition = this.book.renderTo('epub-render', {
+      height: '75vh'
+    })
     this.rendition.display()
   },
   methods: {

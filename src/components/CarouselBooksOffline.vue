@@ -18,7 +18,7 @@
     </q-carousel-slide>
 
     <q-carousel-slide :name="2" class="column no-wrap">
-      <div class="row fit justify-center items-center q-gutter-xs q-col-gutter no-wrap">
+      <div class="row fit justify-center items-center q-gutter-md no-wrap">
         <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/49709315446.jpg" />
       </div>
     </q-carousel-slide>

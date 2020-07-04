@@ -49,7 +49,7 @@ export default {
   name: 'PageLogin',
   methods: {
     irPara () {
-      this.$router.push({ name: 'TelaInicial' })
+      this.$router.push({ name: 'dashboard' })
     }
   }
 }

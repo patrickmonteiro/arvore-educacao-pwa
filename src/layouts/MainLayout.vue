@@ -11,11 +11,42 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         /> -->
 
-        <q-toolbar-title>
+        <q-toolbar-title @click="$router.push('/dashboard')">
           <img src="/logo_arvore.svg" style="width: 144px; height: 36px;">
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn-dropdown color="primary" icon="person" class="text-white" rounded flat>
+          <q-list>
+            <q-item clickable v-close-popup @click="$router.push('/dashboard')">
+              <q-item-section>
+                <q-item-label>Início</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item clickable v-close-popup @click="update()">
+              <q-item-section>
+                <q-item-label>Atualizar Aplicativo</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup @click="$router.push('/carteira')">
+              <q-item-section>
+                <q-item-label>Carteira</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Rank</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Sair</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+    </q-btn-dropdown>
       </q-toolbar>
     </q-header>
 
@@ -102,6 +133,11 @@ export default {
           link: 'https://awesome.quasar.dev'
         }
       ]
+    }
+  },
+  methods: {
+    update () {
+      location.reload(true)
     }
   }
 }
