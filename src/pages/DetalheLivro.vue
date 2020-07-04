@@ -27,9 +27,21 @@
         label="Ler Agora"
         class="full-width"
         :loading="loading"
-        @click="livroAdquirido"
+        @click="lerLivro"
         />
       </div>
+      <div class="col-12 q-pt-md">
+        <q-btn
+        color="primary"
+        icon-right="cloud_download"
+        outline
+        label="Baixar para biblioteca offline"
+        class="full-width"
+        :loading="loading"
+        @click="lerLivro"
+        />
+      </div>
+
     </div>
   </q-page>
 </template>
@@ -49,11 +61,8 @@ export default {
     }
   },
   methods: {
-    livroAdquirido () {
-      this.loading = true
-      setTimeout(() => {
-        this.$router.push({ name: 'sucessoLivroPremium' })
-      }, 3000)
+    lerLivro () {
+      this.$router.push('/epub-reader')
     },
     show (grid) {
       this.$q.bottomSheet({

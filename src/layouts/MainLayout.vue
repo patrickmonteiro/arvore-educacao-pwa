@@ -34,12 +34,6 @@
               </q-item-section>
             </q-item>
 
-            <!-- <q-item clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Rank</q-item-label>
-              </q-item-section>
-            </q-item> -->
-
             <q-item clickable v-close-popup @click="$router.push({ name: 'loginPage' })">
               <q-item-section>
                 <q-item-label>Sair</q-item-label>
