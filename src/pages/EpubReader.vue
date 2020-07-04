@@ -1,10 +1,19 @@
 <template>
   <q-page>
     <div id="epub-render"></div>
+    <q-btn @click="anterior()">
+      <q-icon name="arrow_left" />
+      Anterior
+    </q-btn>
+    <q-btn @click="proximo()">
+      Próximo
+      <q-icon name="arrow_right" />
+    </q-btn>
   </q-page>
 </template>
 
 <script>
+import ePub from 'epubjs'
 export default {
   name: 'EpubReader',
   props: {
@@ -17,16 +26,25 @@ export default {
   data () {
     return {
       show: true,
-      src: '/4870695114727.pdf'
+      src: '/4870695114727.pdf',
+      book: {},
+      rendition: {}
     }
   },
   mounted () {
     // eslint-disable-next-line no-undef
-    const book = ePub('https://dental-college.s3.amazonaws.com/49709315336.epub')
-    const rendition = book.renderTo('epub-render', { flow: 'paginated', height: '100%' })
-    rendition.display()
+    this.book = ePub(this.epubUrl)
     // eslint-disable-next-line no-undef
-    console.log(book)
+    this.rendition = this.book.renderTo('epub-render')
+    this.rendition.display()
+  },
+  methods: {
+    proximo () {
+      this.rendition.next()
+    },
+    anterior () {
+      this.rendition.prev()
+    }
   }
 }
 </script>
