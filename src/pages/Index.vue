@@ -18,6 +18,7 @@
         </p>
       </div>
       <q-separator inset />
+      <carousel-books-offline/>
       <!-- <q-carousel
         v-model="slide"
         disabled
@@ -39,10 +40,12 @@
 
 <script>
 import CarouselBooks from 'components/CarouselBooks'
+import CarouselBooksOffline from 'components/CarouselBooksOffline'
 export default {
   name: 'PageIndex',
   components: {
-    CarouselBooks
+    CarouselBooks,
+    CarouselBooksOffline
   },
   data () {
     return {
