@@ -5,7 +5,7 @@ const routes = [
     name: 'Login',
     component: () => import('layouts/AuthLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Login.vue') }
+      { path: '', name: 'loginPage', component: () => import('pages/Login.vue') }
     ]
   },
   {
@@ -16,6 +16,7 @@ const routes = [
       { path: '/dashboard', name: 'dashboard', component: () => import('pages/Index.vue') },
       { path: '/epub-reader', component: () => import('pages/EpubReader.vue') },
       { path: '/carteira', component: () => import('pages/Carteira.vue') },
+      { path: '/detalhe-livro', name: 'detalheLivro', component: () => import('pages/DetalheLivro.vue'), props: true },
       { path: '/detalhe-livro-premium', name: 'detalheLivroPremium', component: () => import('pages/DetalheLivroPremium.vue'), props: true },
       { path: '/sucesso-livro-premium', name: 'sucessoLivroPremium', component: () => import('pages/SucessoLivroPremium.vue') }
     ]

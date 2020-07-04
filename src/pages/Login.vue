@@ -27,8 +27,8 @@
         <div class="border-after"></div>
       </div>
     </div>
-    <div class="q-pa-md">
-      <q-btn class="q-mr-xl btn-fixed-width" no-caps color="primary" outline>
+    <div class="q-pa-md q-gutter-md">
+      <q-btn class="btn-fixed-width" no-caps color="primary" outline>
         <img src="~assets/icon-google.svg" />
         <div class="q-ml-sm text-center">
           Google

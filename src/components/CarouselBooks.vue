@@ -12,15 +12,15 @@
   >
     <q-carousel-slide :name="1" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[0].img" />
-        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[1].img" />
+        <q-img @click="toBook(books[0].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[0].img" />
+        <q-img @click="toBook(books[1].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[1].img" />
       </div>
     </q-carousel-slide>
 
     <q-carousel-slide :name="2" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[2].img" />
-        <q-img @click="toBook()" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[3].img" />
+        <q-img @click="toBook(books[2].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[2].img" />
+        <q-img @click="toBook(books[3].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[3].img" />
       </div>
     </q-carousel-slide>
 
@@ -66,8 +66,8 @@ export default {
     }
   },
   methods: {
-    toBook () {
-      this.$router.push('/epub-reader')
+    toBook (img) {
+      this.$router.push({ name: 'detalheLivro', params: { imgBook: img } })
     }
   }
 }
