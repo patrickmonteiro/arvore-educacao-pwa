@@ -15,7 +15,9 @@ const routes = [
     children: [
       { path: '/dashboard', name: 'dashboard', component: () => import('pages/Index.vue') },
       { path: '/epub-reader', component: () => import('pages/EpubReader.vue') },
-      { path: '/carteira', component: () => import('pages/Carteira.vue') }
+      { path: '/carteira', component: () => import('pages/Carteira.vue') },
+      { path: '/detalhe-livro-premium', name: 'detalheLivroPremium', component: () => import('pages/DetalheLivroPremium.vue'), props: true },
+      { path: '/sucesso-livro-premium', name: 'sucessoLivroPremium', component: () => import('pages/SucessoLivroPremium.vue') }
     ]
   },
   // Always leave this as last one,

@@ -3,8 +3,7 @@
     <div class="flex column full-width">
       <h4 class="text-bold q-ml-sm">Biblioteca Offline</h4>
       <q-separator inset />
-      <carousel-books
-      />
+      <carousel-books-offline/>
     </div>
     <div class="flex column full-width">
       <span class="title flex">
@@ -18,22 +17,8 @@
         </p>
       </div>
       <q-separator inset />
-      <carousel-books-offline/>
-      <!-- <q-carousel
-        v-model="slide"
-        disabled
-        swipeable
-        animated
-        arrows
-        height="230px"
-        class="text-white"
-      >
-        <q-carousel-slide name="style" class="row justify-start items-center q-gutter-xs no-wrap">
-          <q-img disabled class="rounded-borders col-4 full-height" src="/epubs/49709315336.jpg" />
-          <q-img disabled class="rounded-borders col-4 full-height" src="/epubs/49709315336.jpg" />
-          <q-img disabled class="rounded-borders col-4 full-height" src="/epubs/49709315336.jpg" />
-        </q-carousel-slide>
-      </q-carousel> -->
+        <carousel-books
+        />
     </div>
   </q-page>
 </template>
