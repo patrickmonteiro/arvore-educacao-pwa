@@ -1,7 +1,24 @@
 <template>
   <q-page>
+    <div class="row" v-if="show">
+      <div class="col-12 q-pa-sm">
+        <q-select
+          filled
+          v-model="chapter"
+          :options="toc"
+          label="Sumário"
+          dense
+          option-value="href"
+          option-label="label"
+          option-disable="inactive"
+          emit-value
+          map-options
+          @input="goToExcerpt"
+        />
+      </div>
+    </div>
     <div id="epub-render"></div>
-    <div class="row q-gutter-md q-px-sm">
+    <div class="row q-gutter-md q-px-sm" v-if="show">
       <q-btn
         @click="anterior()"
         icon="arrow_left"
@@ -17,6 +34,9 @@
         dense
       />
     </div>
+    <q-inner-loading :showing="!show">
+      <q-spinner-gears size="50px" color="primary" />
+    </q-inner-loading>
   </q-page>
 </template>
 
@@ -33,15 +53,25 @@ export default {
   },
   data () {
     return {
-      show: true,
+      show: false,
       src: '/4870695114727.pdf',
       book: {},
-      rendition: {}
+      rendition: {},
+      chapter: '',
+      toc: [],
+      progressValue: 0
     }
   },
   mounted () {
     // eslint-disable-next-line no-undef
     this.book = ePub(this.epubUrl)
+    console.log(this.bool)
+    this.book.loaded.navigation.then(({ toc }) => {
+      this.toc = toc
+    })
+    this.book.ready.then(() => {
+      this.show = true
+    })
     // eslint-disable-next-line no-undef
     this.rendition = this.book.renderTo('epub-render', {
       height: '75vh'
@@ -54,6 +84,15 @@ export default {
     },
     anterior () {
       this.rendition.prev()
+    },
+    goToExcerpt () {
+      console.log(this.chapter)
+      if (this.chapter.toLowerCase().indexOf('xhtml') > 0) {
+        this.rendition.display(this.chapter)
+      } else {
+        this.rendition.display('epubcfi(' + this.chapter + ')')
+        this.rendition.annotations.highlight('epubcfi(' + this.chapter + ')')
+      }
     }
   }
 }
