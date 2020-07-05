@@ -63,22 +63,27 @@ export default {
     }
   },
   mounted () {
-    // eslint-disable-next-line no-undef
-    this.book = ePub(this.epubUrl)
-    console.log(this.bool)
+    const offlineData = JSON.parse(localStorage.getItem('offline')) || { books: [] }
+    const hasOfflineBook = offlineData.books.find(book => book && book.bookUrl === this.epubUrl)
+    this.book = ePub(hasOfflineBook ? this.getOfflineBook(this.epubUrl) : this.epubUrl)
+
     this.book.loaded.navigation.then(({ toc }) => {
       this.toc = toc
     })
     this.book.ready.then(() => {
       this.show = true
     })
-    // eslint-disable-next-line no-undef
+
     this.rendition = this.book.renderTo('epub-render', {
       height: '75vh'
     })
     this.rendition.display()
   },
   methods: {
+    getOfflineBook (url) {
+      const bookBufferBase64 = localStorage.getItem(`offline-book-${url}`)
+      return Uint8Array.from(atob(bookBufferBase64), c => c.charCodeAt(0)).buffer
+    },
     proximo () {
       this.rendition.next()
     },
