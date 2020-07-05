@@ -83,6 +83,10 @@ export default {
 
           localStorage.setItem(`offline-book-${urlBook}`, this.toBase64(responseBook.data))
           localStorage.setItem('offline', JSON.stringify(offlineData))
+          this.$q.notify({
+            message: 'Livro salvo com sucesso',
+            color: 'secondary'
+          })
         })
       })
     },
