@@ -1,15 +1,23 @@
 <template>
   <q-page class="flex">
     <div class="flex column full-width">
-      <h4 class="text-bold q-ml-sm">Biblioteca Offline</h4>
+      <p class="text-h5 text-bold q-pt-md q-pl-sm">Biblioteca Offline</p>
       <q-separator inset />
       <carousel-books-offline/>
     </div>
+
     <div class="flex column full-width">
+      <p class="text-h5 text-bold q-pa-sm">Biblioteca</p>
+      <q-separator inset />
+      <carousel-books/>
+    </div>
+
+    <div class="flex column full-width q-pb-md">
       <span class="title flex">
-        <h4 class="text-bold q-ml-sm">Prateleira Premium
+        <p class="text-h5 text-bold q-pl-sm">
+          Prateleira Premium
           <q-icon size="sm" name="star" color="yellow"></q-icon>
-        </h4>
+        </p>
       </span>
       <div class="subtitle flex">
         <p class="text-grey q-ml-sm">Tenha acesso a prateleira premium acumulando pontos no ranking.
@@ -17,19 +25,22 @@
         </p>
       </div>
       <q-separator inset />
-        <carousel-books
+        <carousel-books-premium
+          :disable="true"
         />
     </div>
   </q-page>
 </template>
 
 <script>
+import CarouselBooksPremium from 'components/CarouselBooksPremium'
 import CarouselBooks from 'components/CarouselBooks'
 import CarouselBooksOffline from 'components/CarouselBooksOffline'
 export default {
   name: 'PageIndex',
   components: {
     CarouselBooks,
+    CarouselBooksPremium,
     CarouselBooksOffline
   },
   data () {

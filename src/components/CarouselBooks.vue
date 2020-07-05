@@ -12,15 +12,15 @@
   >
     <q-carousel-slide :name="1" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBook(books[0].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[0].img" />
-        <q-img @click="toBook(books[1].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[1].img" />
+        <q-img @click="toBook(books[0].img, books[0].epub)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[0].img" />
+        <q-img @click="toBook(books[1].img, books[1].epub)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[1].img" />
       </div>
     </q-carousel-slide>
 
     <q-carousel-slide :name="2" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBook(books[2].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[2].img" />
-        <q-img @click="toBook(books[3].img)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[3].img" />
+        <q-img @click="toBook(books[2].img, books[2].epub)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[2].img" />
+        <q-img @click="toBook(books[3].img, books[3].epub)" class="col-xs-5 col-sm-2 col-md-2 responsive" :src="books[3].img" />
       </div>
     </q-carousel-slide>
 
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+const URL_EPUB = 'https://dental-college.s3.amazonaws.com'
 export default {
   name: 'CarouselBooks',
   data () {
@@ -51,23 +52,27 @@ export default {
       slide: 1,
       books: [
         {
-          img: '/epubs/49709315336.jpg'
+          img: `${URL_EPUB}/49709315336.jpg`,
+          epub: `${URL_EPUB}/49709315336.epub`
         },
         {
-          img: '/epubs/49709315346.jpg'
+          img: `${URL_EPUB}/49709315393.jpg`,
+          epub: `${URL_EPUB}/49709315393.epub`
         },
         {
-          img: '/epubs/49709315446.jpg'
+          img: `${URL_EPUB}/49709315356.jpg`,
+          epub: `${URL_EPUB}/49709315356.epub`
         },
         {
-          img: '/epubs/49709315483.jpg'
+          img: `${URL_EPUB}/49709315375.jpg`,
+          epub: `${URL_EPUB}/49709315375.epub`
         }
       ]
     }
   },
   methods: {
-    toBook (img) {
-      this.$router.push({ name: 'detalheLivro', params: { imgBook: img } })
+    toBook (img, epub) {
+      this.$router.push({ name: 'detalheLivro', params: { imgBook: img, urlBook: epub } })
     }
   }
 }

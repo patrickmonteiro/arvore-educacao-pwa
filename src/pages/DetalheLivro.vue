@@ -1,9 +1,10 @@
 <template>
   <q-page padding="">
-    <div class="text-h4 text-center text-weight-bold text-grey-8">
+    <div class="text-h5 text-center text-weight-bold">
       Detalhes sobre o livro
     </div>
-    <div class="row justify-center">
+    <q-separator inset />
+    <div class="row justify-center q-pt-md">
       <div class="col-8">
          <q-img
           :src="imgBook"
@@ -53,6 +54,10 @@ export default {
     imgBook: {
       required: true,
       type: String
+    },
+    urlBook: {
+      required: true,
+      type: String
     }
   },
   data () {
@@ -65,23 +70,23 @@ export default {
       return btoa(new Uint8Array(arrayBuffer).reduce((data, byte) => data + String.fromCharCode(byte), ''))
     },
     baixarLivro () {
-      const urlBook = 'https://dental-college.s3.amazonaws.com/49709315336.epub'
+      // const urlBook = 'https://dental-college.s3.amazonaws.com/49709315336.epub'
       const offlineData = JSON.parse(localStorage.getItem('offline')) || { books: [] }
 
-      this.$axios.get(urlBook, {
+      this.$axios.get(this.urlBook, {
         responseType: 'arraybuffer'
       }).then(responseBook => {
         this.$axios.get(this.imgBook, {
           responseType: 'arraybuffer'
         }).then(responseImage => {
-          if (!offlineData.books.find(book => book && book.bookUrl === urlBook)) {
+          if (!offlineData.books.find(book => book && book.bookUrl === this.urlBook)) {
             offlineData.books.push({
-              bookUrl: urlBook,
+              bookUrl: this.urlBook,
               imageData: this.toBase64(responseImage.data)
             })
           }
 
-          localStorage.setItem(`offline-book-${urlBook}`, this.toBase64(responseBook.data))
+          localStorage.setItem(`offline-book-${this.urlBook}`, this.toBase64(responseBook.data))
           localStorage.setItem('offline', JSON.stringify(offlineData))
           this.$q.notify({
             message: 'Livro salvo com sucesso',
@@ -91,7 +96,8 @@ export default {
       })
     },
     lerLivro () {
-      this.$router.push('/epub-reader')
+      this.$router.push({ name: 'epubReader', params: { epubUrl: this.urlBook } })
+      // this.$router.push({ name: 'detalheLivro', params: { imgBook: img, urlBook: epub } })
     },
     show (grid) {
       this.$q.bottomSheet({

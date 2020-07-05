@@ -47,22 +47,22 @@ export default {
   props: {
     epubUrl: {
       required: false,
-      type: String,
-      default: 'https://dental-college.s3.amazonaws.com/49709315336.epub'
+      type: String
     }
   },
   data () {
     return {
       show: false,
-      src: '/4870695114727.pdf',
       book: {},
       rendition: {},
       chapter: '',
       toc: [],
-      progressValue: 0
+      progressValue: 0,
+      countPage: 0
     }
   },
   mounted () {
+    console.log(this.epubUrl)
     const offlineData = JSON.parse(localStorage.getItem('offline')) || { books: [] }
     const hasOfflineBook = offlineData.books.find(book => book && book.bookUrl === this.epubUrl)
     this.book = ePub(hasOfflineBook ? this.getOfflineBook(this.epubUrl) : this.epubUrl)
@@ -86,6 +86,7 @@ export default {
     },
     proximo () {
       this.rendition.next()
+      this.setCountPage()
     },
     anterior () {
       this.rendition.prev()
@@ -98,6 +99,45 @@ export default {
         this.rendition.display('epubcfi(' + this.chapter + ')')
         this.rendition.annotations.highlight('epubcfi(' + this.chapter + ')')
       }
+    },
+    setCountPage () {
+      if (this.countPage < 5) {
+        this.countPage++
+      } else {
+        this.countPage = 0
+        this.setQuestions()
+      }
+    },
+    setQuestions () {
+      this.$q.dialog({
+        title: 'Pergunta do Capítulo',
+        message: 'Do que trata o primeiro capitulo do livro?',
+        options: {
+          type: 'radio',
+          model: 'opt1',
+          // inline: true
+          items: [
+            { label: 'Baleias', value: 'opt1' },
+            { label: 'Sentimentos', value: 'opt2' },
+            { label: 'Árvores', value: 'opt3' }
+          ]
+        },
+        cancel: true,
+        persistent: true
+      }).onOk(data => {
+        this.setPoints()
+      }).onCancel(() => {
+        // console.log('>>>> Cancel')
+      }).onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      })
+    },
+    setPoints () {
+      this.$q.notify({
+        message: 'Pontos creditados na carteira',
+        color: 'green',
+        icon: 'fas fa-coins'
+      })
     }
   }
 }

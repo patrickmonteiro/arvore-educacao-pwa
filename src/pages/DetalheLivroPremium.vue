@@ -1,9 +1,10 @@
 <template>
   <q-page padding="">
-    <div class="text-h4 text-center text-weight-bold text-grey-8">
+    <div class="text-h5 text-center text-bold">
       Livro premium
     </div>
-    <div class="row justify-center">
+    <q-separator inset />
+    <div class="row justify-center q-pt-lg">
       <div class="col-8">
          <q-img
           :src="imgBook"

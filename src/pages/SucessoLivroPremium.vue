@@ -1,10 +1,10 @@
 <template>
   <q-page padding="">
-    <div class="text-h5 text-center text-weight-bold text-grey-8 q-py-lg">
+    <div class="text-h5 text-center text-weight-bold q-py-lg">
       Uau! Agora você adquiriu um livro premium para sua biblioteca.
     </div>
     <div class="row justify-center">
-      <div class="col-8">
+      <div class="col-10">
          <q-img
           src="book_lover.svg"
           class="responsive float-right"

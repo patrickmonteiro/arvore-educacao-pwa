@@ -1,9 +1,10 @@
 <template>
   <q-page padding>
-    <div class="text-h4 text-center text-weight-bold text-grey-8">
+    <div class="text-h5 text-center text-weight-bold">
       Carteira
     </div>
-    <div class="row">
+    <q-separator inset />
+    <div class="row q-pt-md">
       <q-card
         class="my-card text-white col-xs-12 col-sm-6 col-md-4 bg-card-wallet"
       >
@@ -28,18 +29,19 @@
       </q-card>
     </div>
     <div class="row q-mt-md" v-if="banner">
-      <q-banner inline-actions class="bg-orange-5 text-white col-12 rounded-borders">
+      <q-banner dense inline-actions class="bg-orange-5 text-white col-12 rounded-borders">
         Acumulando 500 moedas você poderá trocar por um livro da prateleira premium!
         <template v-slot:action>
           <q-btn flat dense icon="close" @click="banner = false" />
         </template>
       </q-banner>
     </div>
-    <div class="row">
+    <div class="row q-pt-sm">
       <div class="col-12">
-        <div class="text-h4 text-center text-weight-bold text-grey-8">
+        <div class="text-h5 text-center text-weight-bold">
           Livros Premium
         </div>
+        <q-separator inset />
         <carousel-books-premium />
       </div>
     </div>

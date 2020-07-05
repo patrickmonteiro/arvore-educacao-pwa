@@ -12,14 +12,29 @@
   >
     <q-carousel-slide :name="1" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBookPremium('/epubs/lotr.jpg')" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/lotr.jpg" />
-        <q-img @click="toBookPremium('/epubs/hp.jpg')" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/hp.jpg" />
+        <q-img
+          :class="disable ? 'disable-book' : ''"
+          class="col-xs-5 col-sm-2 col-md-2 responsive"
+          :src="books[0].img"
+          @click="toBookPremium(books[0].img)"
+        />
+        <q-img
+          :class="disable ? 'disable-book' : ''"
+          class="col-xs-5 col-sm-2 col-md-2 responsive"
+          :src="books[1].img"
+          @click="toBookPremium(books[1].img)"
+        />
       </div>
     </q-carousel-slide>
 
     <q-carousel-slide :name="2" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
-        <q-img @click="toBookPremium('/epubs/pj.jpg')" class="col-xs-5 col-sm-2 col-md-2 responsive" src="/epubs/pj.jpg" />
+        <q-img
+          :class="disable ? 'disable-book' : ''"
+          class="col-xs-5 col-sm-2 col-md-2 responsive"
+          :src="books[2].img"
+          @click="toBookPremium(books[2].img)"
+        />
       </div>
     </q-carousel-slide>
 
@@ -45,15 +60,47 @@
 <script>
 export default {
   name: 'CarouselBooks',
+  props: {
+    disable: {
+      type: Boolean,
+      default: false,
+      required: false
+    }
+  },
   data () {
     return {
-      slide: 1
+      slide: 1,
+      books: [
+        {
+          img: '/epubs/lotr.jpg'
+        },
+        {
+          img: '/epubs/hp.jpg'
+        },
+        {
+          img: '/epubs/pj.jpg'
+        }
+      ]
     }
   },
   methods: {
     toBookPremium (img) {
-      this.$router.push({ name: 'detalheLivroPremium', params: { imgBook: img } })
+      if (this.disable) {
+        this.$q.notify({
+          message: 'Acumule moedas para trocar pelo livro premium!',
+          color: 'purple',
+          icon: 'fas fa-coins'
+        })
+      } else {
+        this.$router.push({ name: 'detalheLivroPremium', params: { imgBook: img } })
+      }
     }
   }
 }
 </script>
+
+<style scoped>
+.disable-book {
+  opacity: 0.5;
+}
+</style>
