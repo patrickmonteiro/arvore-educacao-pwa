@@ -1,26 +1,31 @@
 # Árvore Educação (arvore-educacao-pwa)
 
-Plataforma de leitura para escolas.
+Solução criada para o desafio do Mega Hack.
 
-## Install the dependencies
-```bash
-yarn
+A aplicação foi desenvolvida utilizando Quasar Framework, o framework baseado no Vue.js que permite a disponibilização da aplicação em Single Page Application, Progressive Web App, Mobile Cordova Android/iOS, Electron...
+
+Nosso foco foi trabalhar com PWA para permitir um acesso offline, ausentando assim a necessidate de baixar o aplicativo e consumir espaço interno do celular. Além disso, funciona muito bem com internet ruim, como por exemplo 2G.
+
+A aplicação permite o donwload do livro para acessa-lo quando estiver sem internet.
+
+## Demo
+
+O aplicativo pode ser acessado no seguinte link para testes: 
+
+[https://arvoreeducacao.surge.sh](https://arvoreeducacao.surge.sh)
+
+## Ambiente de desenvolvimento
+
+Para rodar o aplicativo em ambiente de desenvolvimento é necessário ter o quasar CLI, e executar o seguinte comando:
+
+```
+quasar dev -m pwa
+
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+## Gerando Build para produção
 
-### Lint the files
-```bash
-yarn run lint
 ```
+quasar build -m pwa
 
-### Build the app for production
-```bash
-quasar build
 ```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
