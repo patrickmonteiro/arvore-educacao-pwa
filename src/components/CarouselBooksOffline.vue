@@ -49,7 +49,7 @@ export default {
   name: 'CarouselBooks',
   data () {
     return {
-      slide: 1,
+      slide: 0,
       listBooksOffline: []
     }
   },
