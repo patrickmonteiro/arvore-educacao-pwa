@@ -126,8 +126,8 @@ module.exports = function (/* ctx */) {
         description: 'Plataforma de leitura para escolas.',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#ffffff',
-        theme_color: '#027be3',
+        background_color: '#fafafa',
+        theme_color: '#44CBCD',
         icons: [
           {
             src: 'icons/icon-128x128.png',
