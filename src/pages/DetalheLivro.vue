@@ -38,7 +38,7 @@
         label="Baixar para biblioteca offline"
         class="full-width"
         :loading="loading"
-        @click="lerLivro"
+        @click="baixarLivro"
         />
       </div>
 
@@ -61,6 +61,31 @@ export default {
     }
   },
   methods: {
+    toBase64 (arrayBuffer) {
+      return btoa(new Uint8Array(arrayBuffer).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+    },
+    baixarLivro () {
+      const urlBook = 'https://dental-college.s3.amazonaws.com/49709315336.epub'
+      const offlineData = JSON.parse(localStorage.getItem('offline')) || { books: [] }
+
+      this.$axios.get(urlBook, {
+        responseType: 'arraybuffer'
+      }).then(responseBook => {
+        this.$axios.get(this.imgBook, {
+          responseType: 'arraybuffer'
+        }).then(responseImage => {
+          if (!offlineData.books.find(book => book && book.bookUrl === urlBook)) {
+            offlineData.books.push({
+              bookUrl: urlBook,
+              imageData: this.toBase64(responseImage.data)
+            })
+          }
+
+          localStorage.setItem(`offline-book-${urlBook}`, this.toBase64(responseBook.data))
+          localStorage.setItem('offline', JSON.stringify(offlineData))
+        })
+      })
+    },
     lerLivro () {
       this.$router.push('/epub-reader')
     },

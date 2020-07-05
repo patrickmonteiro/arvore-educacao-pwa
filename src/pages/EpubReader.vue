@@ -41,7 +41,10 @@ export default {
   },
   mounted () {
     // eslint-disable-next-line no-undef
-    this.book = ePub(this.epubUrl)
+    const offlineData = JSON.parse(localStorage.getItem('offline')) || { books: [] }
+    const hasOfflineBook = offlineData.books.find(book => book && book.bookUrl === this.epubUrl)
+    this.book = ePub(hasOfflineBook ? this.getOfflineBook(this.epubUrl) : this.epubUrl)
+
     // eslint-disable-next-line no-undef
     this.rendition = this.book.renderTo('epub-render', {
       height: '75vh'
@@ -49,6 +52,10 @@ export default {
     this.rendition.display()
   },
   methods: {
+    getOfflineBook (url) {
+      const bookBufferBase64 = localStorage.getItem(`offline-book-${url}`)
+      return Uint8Array.from(atob(bookBufferBase64), c => c.charCodeAt(0)).buffer
+    },
     proximo () {
       this.rendition.next()
     },
