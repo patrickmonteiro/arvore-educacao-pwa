@@ -14,11 +14,12 @@ A aplicação permite o donwload do livro para acessa-lo quando estiver sem inte
     <img src="https://user-images.githubusercontent.com/5731176/86542428-0560a300-beec-11ea-9181-4e69fe39f13d.png" width="220px" />
     <img src="https://user-images.githubusercontent.com/5731176/86542426-0396df80-beec-11ea-8193-db35aa20f10e.png" width="220px" />
     <img src="https://user-images.githubusercontent.com/5731176/86542427-04c80c80-beec-11ea-8466-28d7d02d975c.png" width="220px" />
+    <img src="https://user-images.githubusercontent.com/8525721/87313305-0e5b0100-c4f8-11ea-8645-972651cf4a1e.jpg" width="220px" />
 </h1>
 
-O aplicativo pode ser acessado no seguinte link para testes:
+O aplicativo com a implementação de realidade aumentada pode ser acessado no seguinte link para testes:
 
-[https://arvoreeducacao.surge.sh](https://arvoreeducacao.surge.sh)
+[https://arvoreeducacao-ar.surge.sh](https://arvoreeducacao.surge.sh)
 
 
 ## 👩‍💻 Ambiente de desenvolvimento
