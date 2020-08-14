@@ -18,7 +18,8 @@ const routes = [
       { path: '/carteira', component: () => import('pages/Carteira.vue') },
       { path: '/detalhe-livro', name: 'detalheLivro', component: () => import('pages/DetalheLivro.vue'), props: true },
       { path: '/detalhe-livro-premium', name: 'detalheLivroPremium', component: () => import('pages/DetalheLivroPremium.vue'), props: true },
-      { path: '/sucesso-livro-premium', name: 'sucessoLivroPremium', component: () => import('pages/SucessoLivroPremium.vue') }
+      { path: '/sucesso-livro-premium', name: 'sucessoLivroPremium', component: () => import('pages/SucessoLivroPremium.vue') },
+      { path: '/premium-ar', name: 'sucessoPremiumAr', component: () => import('pages/PremiumAr.vue') }
     ]
   },
   // Always leave this as last one,

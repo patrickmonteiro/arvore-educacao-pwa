@@ -4,11 +4,11 @@
       Carteira
     </div>
     <q-separator inset />
-    <div class="row q-pt-md">
+    <div class="row q-pt-md justify-center items-center">
       <q-card
         class="my-card text-white col-xs-12 col-sm-6 col-md-4 bg-card-wallet"
       >
-        <q-card-section class="row justify-between">
+        <q-card-section class="row justify-center items-center">
           <div class="col-9">
             <div class="text-h6">
               Você possui <strong>400</strong> moedas em sua carteira</div>

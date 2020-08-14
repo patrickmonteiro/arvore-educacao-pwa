@@ -13,17 +13,26 @@
     <q-carousel-slide :name="1" class="column no-wrap">
       <div class="row fit justify-center items-center q-gutter-md no-wrap">
         <q-img
-          :class="disable ? 'disable-book' : ''"
-          class="col-xs-5 col-sm-2 col-md-2 responsive"
-          :src="books[0].img"
-          @click="toBookPremium(books[0].img)"
+        :class="disable ? 'disable-book' : ''"
+        class="col-xs-5 col-sm-2 col-md-2 responsive"
+        :src="books[0].img"
+        @click="toBookPremium(books[0].img)"
         />
-        <q-img
+        <div>
+          <q-img
           :class="disable ? 'disable-book' : ''"
           class="col-xs-5 col-sm-2 col-md-2 responsive"
           :src="books[1].img"
           @click="toBookPremium(books[1].img)"
-        />
+          />
+          <q-btn
+          class="text-white bg-primary q-mt-xs"
+          size="xs"
+          rounded
+          push
+          label="Iniciar Realidade Aumentada"
+          @click="routeModify()"/>
+        </div>
       </div>
     </q-carousel-slide>
 
@@ -93,7 +102,11 @@ export default {
         })
       } else {
         this.$router.push({ name: 'detalheLivroPremium', params: { imgBook: img } })
+        this.routeModify()
       }
+    },
+    routeModify () {
+      this.$router.push({ name: 'sucessoPremiumAr' })
     }
   }
 }
